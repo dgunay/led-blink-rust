@@ -9,6 +9,7 @@ edition = "2018"
 [dependencies]
 # A panic handler is needed.  This is a crate with the most basic one.
 panic-halt = "0.2.0"
+ufmt = "0.1.0"
 
 [dependencies.arduino-uno]
 # Has a bunch of crates with board utilities. Arduino-uno is one of them.
@@ -16,11 +17,14 @@ git = "https://github.com/Rahix/avr-hal"
 
 [profile.dev]
 panic = "abort"
-opt-level = 'z' # optimize for size
-# codegen-units = 1
+opt-level = 's' # optimize for size
+lto = true
 
 
 # TODO: release builds segfault for some reason
 [profile.release]
 panic = "abort"
-opt-level = 'z' # optimize for size
+codegen-units = 1
+debug = true
+lto = true
+opt-level = 's' # optimize for size
