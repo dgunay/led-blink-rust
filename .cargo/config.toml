@@ -1,0 +1,7 @@
+[build]
+target = "avr-atmega328p.json"
+# target = "avr-unknown-gnu-atmega328"
+
+[unstable]
+# TODO: I don't know what the fuck this does
+build-std = ["core"]

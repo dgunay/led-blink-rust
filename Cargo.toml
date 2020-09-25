@@ -1,0 +1,26 @@
+[package]
+name = "rust-arduino-blink"
+version = "0.1.0"
+authors = ["devin"]
+edition = "2018"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+# A panic handler is needed.  This is a crate with the most basic one.
+panic-halt = "0.2.0"
+
+[dependencies.arduino-uno]
+# Has a bunch of crates with board utilities. Arduino-uno is one of them.
+git = "https://github.com/Rahix/avr-hal"
+
+[profile.dev]
+panic = "abort"
+opt-level = 'z' # optimize for size
+# codegen-units = 1
+
+
+# TODO: release builds segfault for some reason
+[profile.release]
+panic = "abort"
+opt-level = 'z' # optimize for size
